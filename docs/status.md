@@ -2,7 +2,7 @@
 
 # Scraper status
 
-**24 of 71 councils complete (33%)** — 7 partial, 3 broken, 37 not started.
+**28 of 71 councils complete (39%)** — 7 partial, 3 broken, 33 not started.
 
 Derived from the recorded test fixtures, so it cannot disagree with
 what the scrapers actually produce. Regenerate with
@@ -33,9 +33,11 @@ whenever a fixture changes; CI checks it is current.
 | ✅ | `glen_eira` | 130 | 2020-2026 | 130 | 130 |  |
 | ✅ | `hornsby` | 291 | 2020-2026 | 288 | 143 |  |
 | ✅ | `inner_west` | 306 | 2020-2026 | 297 | 203 |  |
+| ✅ | `ipswich` | 784 | 2020-2026 | 644 | 635 |  |
 | ✅ | `kuringgai` | 313 | 2020-2026 | 296 | 259 |  |
 | ✅ | `lane_cove` | 161 | 2020-2026 | 159 | 150 |  |
 | ✅ | `liverpool` | 200 | 2020-2026 | 194 | 135 |  |
+| ✅ | `lockyer_valley` | 118 | 2020-2026 | 117 | 102 |  |
 | ✅ | `manningham` | 53 | 2021-2026 | 53 | 37 |  |
 | 🟡 | `melbourne` | 1 | 2024-2024 | 1 | 0 | only 1 meeting(s); only 1 year(s); no minutes on any past meeting; nothing newer than 2024 |
 | ✅ | `merri_bek` | 142 | 2016-2026 | 128 | 110 |  |
@@ -46,6 +48,8 @@ whenever a fixture changes; CI checks it is current.
 | ✅ | `randwick` | 429 | 2020-2026 | 424 | 360 |  |
 | ✅ | `redland_qld` | 197 | 2020-2026 | 173 | 108 |  |
 | 🟡 | `ryde` | 1 | 2024-2024 | 1 | 0 | only 1 meeting(s); only 1 year(s); no minutes on any past meeting; nothing newer than 2024 |
+| ✅ | `scenic_rim` | 184 | 2020-2026 | 184 | 138 |  |
+| ✅ | `sunshine_coast` | 120 | 2020-2026 | 120 | 96 |  |
 | ✅ | `waverley` | 277 | 2020-2026 | 270 | 247 |  |
 | ✅ | `whitehorse` | 160 | 2020-2026 | 160 | 150 |  |
 | 🟡 | `yarra` | 1 | 2025-2025 | 1 | 0 | only 1 meeting(s); only 1 year(s); no minutes on any past meeting; nothing newer than 2025 |
@@ -55,4 +59,4 @@ whenever a fixture changes; CI checks it is current.
 No scraper yet. Run `python scripts/detect_platform.py <slug>` to see
 which platform a council runs before writing one.
 
-`bayside_nsw` `blacktown` `brisbane` `cardinia` `casey` `fairfield` `frankston` `gold_coast` `greater_dandenong` `hobsons_bay` `hume` `ipswich` `kingston` `knox` `lockyer_valley` `logan` `maribyrnong` `melton` `monash` `moonee_valley` `moreton_bay` `mornington_peninsula` `mosman` `nillumbik` `noosa` `north_sydney` `scenic_rim` `somerset` `stonnington` `sunshine_coast` `sutherland` `sydney` `the_hills` `whittlesea` `willoughby` `wyndham` `yarra_ranges`
+`bayside_nsw` `blacktown` `brisbane` `cardinia` `casey` `fairfield` `frankston` `gold_coast` `greater_dandenong` `hobsons_bay` `hume` `kingston` `knox` `logan` `maribyrnong` `melton` `monash` `moonee_valley` `moreton_bay` `mornington_peninsula` `mosman` `nillumbik` `noosa` `north_sydney` `somerset` `stonnington` `sutherland` `sydney` `the_hills` `whittlesea` `willoughby` `wyndham` `yarra_ranges`
