@@ -2,7 +2,7 @@
 
 # Scraper status
 
-**29 of 71 councils complete (40%)** — 7 partial, 3 broken, 32 not started.
+**30 of 71 councils complete (42%)** — 8 partial, 3 broken, 30 not started.
 
 Derived from the recorded test fixtures, so it cannot disagree with
 what the scrapers actually produce. Regenerate with
@@ -32,6 +32,7 @@ whenever a fixture changes; CI checks it is current.
 | ✅ | `darebin` | 84 | 2022-2026 | 84 | 79 |  |
 | ✅ | `georges_river` | 632 | 2020-2026 | 630 | 571 |  |
 | ✅ | `glen_eira` | 130 | 2020-2026 | 130 | 130 |  |
+| ✅ | `gold_coast` | 452 | 2022-2026 | 452 | 372 |  |
 | ✅ | `hornsby` | 291 | 2020-2026 | 288 | 143 |  |
 | ✅ | `inner_west` | 306 | 2020-2026 | 297 | 203 |  |
 | ✅ | `ipswich` | 784 | 2020-2026 | 644 | 635 |  |
@@ -42,6 +43,7 @@ whenever a fixture changes; CI checks it is current.
 | ✅ | `manningham` | 53 | 2021-2026 | 53 | 37 |  |
 | 🟡 | `melbourne` | 1 | 2024-2024 | 1 | 0 | only 1 meeting(s); only 1 year(s); no minutes on any past meeting; nothing newer than 2024 |
 | ✅ | `merri_bek` | 142 | 2016-2026 | 128 | 110 |  |
+| 🟡 | `moreton_bay` | 131 | 2020-2024 | 131 | 106 | nothing newer than 2024 |
 | ✅ | `northern_beaches` | 141 | 2016-2026 | 139 | 126 |  |
 | ✅ | `parramatta` | 742 | 2008-2026 | 742 | 683 |  |
 | ✅ | `penrith_city` | 118 | 2020-2026 | 118 | 115 |  |
@@ -60,4 +62,4 @@ whenever a fixture changes; CI checks it is current.
 No scraper yet. Run `python scripts/detect_platform.py <slug>` to see
 which platform a council runs before writing one.
 
-`bayside_nsw` `blacktown` `cardinia` `casey` `fairfield` `frankston` `gold_coast` `greater_dandenong` `hobsons_bay` `hume` `kingston` `knox` `logan` `maribyrnong` `melton` `monash` `moonee_valley` `moreton_bay` `mornington_peninsula` `mosman` `nillumbik` `noosa` `north_sydney` `somerset` `stonnington` `sutherland` `sydney` `the_hills` `whittlesea` `willoughby` `wyndham` `yarra_ranges`
+`bayside_nsw` `blacktown` `cardinia` `casey` `fairfield` `frankston` `greater_dandenong` `hobsons_bay` `hume` `kingston` `knox` `logan` `maribyrnong` `melton` `monash` `moonee_valley` `mornington_peninsula` `mosman` `nillumbik` `noosa` `north_sydney` `somerset` `stonnington` `sutherland` `sydney` `the_hills` `whittlesea` `willoughby` `wyndham` `yarra_ranges`
