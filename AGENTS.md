@@ -204,6 +204,23 @@ Write or fix the scraper. Common patterns:
 - Match agenda links to minutes links by date or meeting name
 - Handle year-by-year pagination where needed
 
+Common ways a minutes link shows up relative to its agenda:
+
+```python
+# A link with "minutes" in its own text
+minutes_link = soup.find("a", string=re.compile("minutes", re.IGNORECASE))
+
+# Or among the agenda link's siblings
+for sibling in agenda_element.find_next_siblings():
+    link = sibling.find("a", string=re.compile("minutes", re.IGNORECASE))
+    if link:
+        minutes_url = base_url + link["href"]
+        break
+
+# Or a dedicated CSS class
+minutes_link = meeting_row.find("a", class_="minutes-link")
+```
+
 ### Step 5 — Run Tests
 
 ```bash
@@ -311,7 +328,7 @@ poetry run python ./aus_council_scrapers/main.py --adapter --format json --counc
 To filter by year:
 
 ```bash
-poetry run python ./aus_council_scrapers/main.py --adapter --format json --council <slug> --year 2024
+poetry run python ./aus_council_scrapers/main.py --adapter --format json --council <slug> --years 2024
 ```
 
 ---

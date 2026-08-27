@@ -107,6 +107,9 @@ This repository is designed to be a **scraping engine** that can be used in two 
 Adapter mode is what production uses. Legacy mode remains available for
 standalone deployments and is not run on a schedule by this project.
 
+For the module layout, the scraper registration mechanism, and the
+record/replay test design, see [docs/architecture.md](docs/architecture.md).
+
 # Scraper coverage
 
 **[docs/status.md](docs/status.md) shows which councils work**, generated
@@ -242,6 +245,20 @@ Full Discord setup instructions: `docs/discord.md`
 ### File Persistence (Legacy)
 
 - `SAVE_FILES=1` - Keep downloaded PDFs and extracted text files (default: delete after processing)
+
+### Upgrading an existing `agendas.db` (Legacy)
+
+`db.init()` creates a fresh database with the current schema automatically —
+this is only needed for a database created before agenda/minutes URLs were
+tracked separately:
+
+```bash
+python scripts/migrate_database.py            # ./agendas.db
+python scripts/migrate_database.py /path/to/agendas.db
+```
+
+It's safe to re-run; it checks which columns already exist before adding
+anything.
 
 # Writing a scraper
 
