@@ -13,6 +13,8 @@ from tests.cassette import (
     PlaybackFetcher,
     RecordingFetcher,
     cassette_paths,
+    load_replay_data,
+    save_replay_data,
     should_record,
 )
 from tests.known_broken import REPLAY_BROKEN
@@ -53,8 +55,7 @@ def _assert_matches(
 
 def _replay(scraper: BaseScraper, slug: str, result_path: str, replay_path: str):
     expected = _load_expected(result_path)
-    with open(replay_path, "r") as f:
-        replay_data = json.load(f)
+    replay_data = load_replay_data(replay_path)
 
     fetcher = PlaybackFetcher(replay_data, slug)
     scraper.fetcher = fetcher
@@ -85,8 +86,7 @@ def _record(scraper: BaseScraper, slug: str, result_path: str, replay_path: str)
     finally:
         recorder.close()
 
-    with open(replay_path, "w") as f:
-        json.dump(recorder.replay_data, f)
+    save_replay_data(replay_path, recorder.replay_data)
     with open(result_path, "w") as f:
         json.dump([r.to_dict() for r in result], f, indent=2)
 

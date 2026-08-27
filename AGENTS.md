@@ -37,7 +37,7 @@ re-record with `RECORD=<slug>`.
 | `tests/cassette.py` | The record/replay machinery |
 | `tests/test_conformance.py` | The gate: invariants that fail the build |
 | `tests/known_broken.py` | Strict xfails for scrapers known to be broken |
-| `tests/test-cases/` | Cached HTTP responses (`*-replay_data.json`) and expected results (`*-result.json`) |
+| `tests/test-cases/` | Cached HTTP responses (`*-replay_data.json.gz`, gzip-compressed — see `cassette.py`) and expected results (`*-result.json`) |
 | `scripts/scorecard.py` | Coverage report derived from the fixtures |
 | `scripts/detect_platform.py` | Identify a council's platform before writing a parser |
 | `docs/status.md` | Which councils work — generated; regenerate when fixtures change |
@@ -210,7 +210,7 @@ Write or fix the scraper. Common patterns:
 poetry run pytest tests/scraper_test.py -k <council_slug> -v
 ```
 
-If test data exists (`tests/test-cases/<slug>-replay_data.json` and `*-result.json`), the test runs in **playback mode** using cached HTTP responses — no network calls.
+If test data exists (`tests/test-cases/<slug>-replay_data.json.gz` and `*-result.json`), the test runs in **playback mode** using cached HTTP responses — no network calls.
 
 If test data does not exist, the test runs **live** and saves new test data files automatically.
 

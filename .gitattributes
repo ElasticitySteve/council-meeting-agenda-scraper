@@ -1,10 +1,10 @@
-# Recorded HTTP fixtures are single-line JSON blobs, some tens of megabytes
-# (manningham is ~27MB on one line). A textual three-way merge of these
-# produces garbage rather than a conflict, so refuse to merge them: resolve
-# by re-recording instead.
+# Recorded HTTP fixtures are gzip-compressed JSON (see cassette.py) -- a
+# textual three-way merge of gzip bytes produces garbage rather than a
+# conflict, so refuse to merge or diff them: resolve by re-recording
+# instead.
 #
 #   RECORD=<slug> poetry run pytest tests/scraper_test.py -k <slug>
-tests/test-cases/*-replay_data.json -merge -diff linguist-generated
+tests/test-cases/*-replay_data.json.gz -merge -diff -text linguist-generated linguist-vendored
 
 # Expected results are small and human-readable, so keep them diffable — but
 # still never auto-merged, since two branches editing the same council's
