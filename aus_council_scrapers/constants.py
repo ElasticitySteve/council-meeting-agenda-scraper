@@ -65,3 +65,19 @@ TIMEZONES_BY_STATE = {
 
 # Earliest year to fetch meeting data from
 EARLIEST_YEAR = 2020
+
+# An honest, identifying User-Agent, for the small number of councils whose
+# WAF blocks DefaultFetcher.DEFAULTHEADERS' spoofed browser UA specifically
+# but returns 200 for this one unchanged (see issue #142 for the project-wide
+# policy question this is deliberately not settling; this constant only
+# gives an individual scraper a documented way to opt in once confirmed).
+# Verified directly (not assumed from the general pattern) against Brisbane
+# City Council: spoofed UA -> 403, this UA with otherwise-default headers ->
+# 200, same again with Accept-Language/Referer/Accept also stripped -> still
+# 200. No WAF-vendor-identifying response headers were present on the 403
+# (no cf-ray, x-akamai-*, x-iinfo, x-amz-cf-id; Server was blank) -- the
+# block does not appear to be a commercial WAF challenge, just a UA rule.
+IDENTIFYING_USER_AGENT = (
+    "SEQCouncilScraper/0.1 "
+    "(+https://github.com/ElasticitySteve/council-meeting-agenda-scraper)"
+)

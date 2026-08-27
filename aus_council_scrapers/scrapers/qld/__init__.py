@@ -1,3 +1,4 @@
+from aus_council_scrapers.scrapers.qld.brisbane import BrisbaneScraper
 from aus_council_scrapers.scrapers.qld.ipswich import IpswichScraper
 from aus_council_scrapers.scrapers.qld.lockyer_valley import LockyerValleyScraper
 from aus_council_scrapers.scrapers.qld.redland import RedlandScraper

@@ -269,9 +269,16 @@ class DefaultFetcher(Fetcher):
     MAX_RETRIES = 4
     RETRY_STATUSES = frozenset({403, 429, 500, 502, 503, 504})
 
-    def __init__(self, fetch_delay: Optional[float] = None):
+    def __init__(self, fetch_delay: Optional[float] = None, user_agent: Optional[str] = None):
         self.__session = requests.Session()
-        self.__set_headers(self.DEFAULTHEADERS)
+        headers = dict(self.DEFAULTHEADERS)
+        if user_agent:
+            # Overrides only the UA string; the rest of DEFAULTHEADERS (which
+            # matters for some sites — see fetch_with_requests' Accept
+            # comment) is unaffected. See BaseScraper's user_agent parameter
+            # for why a scraper would set this.
+            headers["User-Agent"] = user_agent
+        self.__set_headers(headers)
         self.__driver = None
         self.__last_request_at: dict[str, float] = {}
         self.__logger = logging.getLogger(self.__class__.__name__)
@@ -424,7 +431,16 @@ class BaseScraper(ABC):
         council_name: str,
         state: str,
         base_url: str,
+        user_agent: Optional[str] = None,
     ):
+        """`user_agent`: override DefaultFetcher's spoofed browser UA for this
+        scraper only. Some councils' WAFs block that UA specifically and
+        return 200 for an honest, identifying one instead — confirmed
+        (rather than assumed from the general pattern) case by case; see
+        constants.IDENTIFYING_USER_AGENT and issue #142, which this does not
+        settle project-wide. Leave unset unless a council is confirmed to
+        need it — the spoofed UA is what most councils here are recorded
+        against."""
         self.logger = logging.getLogger(self.__class__.__name__)
         self.logger.info(f"{self.__class__.__name__} initialized")
 
@@ -435,7 +451,7 @@ class BaseScraper(ABC):
         self.time_regex: re.Pattern = TIME_REGEX
         self.date_regex: re.Pattern = DATE_REGEX
         self.keyword_regexes: list[re.Pattern] = COUNCIL_HOUSING_REGEX
-        self.fetcher = DefaultFetcher()
+        self.fetcher = DefaultFetcher(user_agent=user_agent)
 
         self.default_name: str = f"{self.council_name.capitalize()} Council Meeting"
         self.default_time: Optional[str] = None
