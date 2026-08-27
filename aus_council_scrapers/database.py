@@ -153,23 +153,6 @@ def insert_result(
     conn.close()
 
 
-def check_url(url: str):
-    """Check if a URL has already been scraped.
-
-    Checks against download_url, agenda_url, and minutes_url columns.
-    """
-    conn = sqlite3.connect("agendas.db")
-    c = conn.cursor()
-    c.execute(
-        """SELECT * FROM agendas 
-           WHERE download_url=? OR agenda_url=? OR minutes_url=?""",
-        (url, url, url),
-    )
-    result = c.fetchone()
-    conn.close()
-    return result
-
-
 def check_meeting_fully_scraped(
     agenda_url: str | None, minutes_url: str | None, db_path: str = "agendas.db"
 ) -> bool:

@@ -18,6 +18,7 @@ __pycache__/
 # macos
 .DS_Store
 
-# logs
+# logs (written relative to CWD, so this can land at either path depending
+# on where main.py is invoked from)
 logs/*
-council_scrapers/logs/*
+aus_council_scrapers/logs/*

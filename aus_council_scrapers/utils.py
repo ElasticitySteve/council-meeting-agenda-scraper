@@ -9,7 +9,7 @@ from typing import Optional
 import fitz
 import pytz
 import requests
-from base import ScraperReturn
+from aus_council_scrapers.base import ScraperReturn
 from dotenv import dotenv_values
 
 from aus_council_scrapers.constants import TIMEZONES_BY_STATE

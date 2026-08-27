@@ -1,4 +1,5 @@
 import asyncio
+import logging
 import os
 from asyncio import AbstractEventLoop
 from typing import List, Optional
@@ -7,6 +8,8 @@ import discord
 from dataclasses import dataclass
 
 from dotenv import dotenv_values
+
+logger = logging.getLogger(__name__)
 
 
 @dataclass
@@ -26,10 +29,10 @@ class DiscordNotifier:
         self.__token = token
 
     async def __on_ready(self):
-        print("On ready")
+        logger.debug("Discord client ready")
         while len(self.__message_queue):
             message = self.__message_queue.pop()
-            print("Send message")
+            logger.debug(f"Sending queued Discord message to channel {message.channel_id}")
             channel = await self.__client.fetch_channel(message.channel_id)
             await channel.send(message.message)
         await self.__client.close()
