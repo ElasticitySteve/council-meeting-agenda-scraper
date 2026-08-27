@@ -7,7 +7,6 @@ from aus_council_scrapers import clock
 from aus_council_scrapers.base import (
     SCRAPER_REGISTRY,
     BaseScraper,
-    DefaultFetcher,
     ScraperReturn,
 )
 from tests.cassette import (
@@ -75,7 +74,11 @@ def _replay(scraper: BaseScraper, slug: str, result_path: str, replay_path: str)
 
 
 def _record(scraper: BaseScraper, slug: str, result_path: str, replay_path: str):
-    recorder = RecordingFetcher(DefaultFetcher())
+    # Wrap the scraper's own fetcher, not a fresh DefaultFetcher() — a scraper
+    # that configured a non-default user_agent (see BaseScraper's user_agent
+    # param) would otherwise silently record against the spoofed default UA
+    # instead, which is exactly backwards for the councils that need this.
+    recorder = RecordingFetcher(scraper.fetcher)
     scraper.fetcher = recorder
     try:
         result = scraper.scraper()
