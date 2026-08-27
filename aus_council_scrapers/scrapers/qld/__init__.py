@@ -5,4 +5,5 @@ from aus_council_scrapers.scrapers.qld.lockyer_valley import LockyerValleyScrape
 from aus_council_scrapers.scrapers.qld.moreton_bay import MoretonBayScraper
 from aus_council_scrapers.scrapers.qld.redland import RedlandScraper
 from aus_council_scrapers.scrapers.qld.scenic_rim import ScenicRimScraper
+from aus_council_scrapers.scrapers.qld.somerset import SomersetScraper
 from aus_council_scrapers.scrapers.qld.sunshine_coast import SunshineCoastScraper
