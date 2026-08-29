@@ -167,6 +167,8 @@ work into a ten-line subclass. Fetch the meeting page and look for:
 | `*.infocouncil.biz`, `bpsGridPDFLink`, `grdMenu` | `InfoCouncilScraper` |
 | `docspublished.com.au` | see `aus_council_scrapers/scrapers/nsw/parramatta.py` |
 | `OCServiceHandler.axd`, `accordion-list-item-container` | OpenCities; see `aus_council_scrapers/scrapers/vic/banyule.py` |
+| `*.escribemeetings.com`, `MeetingsCalendarView.aspx` | eSCRIBE — one JSON POST, no parser; see `aus_council_scrapers/scrapers/qld/logan.py` |
+| `*.resolve.red`, `X-RESOLVE-CLIENT` | Resolve (redsol/CivicClerk) — JSON API, no parser; see `aus_council_scrapers/scrapers/qld/noosa.py` |
 | `cf-mitigated: challenge`, `server: cloudflare` | Cloudflare interstitial — needs Selenium, no header will get past it |
 
 Note that InfoCouncil is not forever: three councils have left the platform
