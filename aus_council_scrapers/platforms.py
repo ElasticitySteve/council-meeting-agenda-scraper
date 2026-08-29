@@ -62,6 +62,27 @@ PLATFORMS: tuple[Platform, ...] = (
         guidance="No base class yet — first council on this platform gets to write one.",
     ),
     Platform(
+        name="eSCRIBE",
+        signatures=(r"escribemeetings\.com", r"MeetingsCalendarView\.aspx"),
+        guidance=(
+            "No parser needed: POST /MeetingsCalendarView.aspx/GetCalendarMeetings "
+            "with {calendarStartDate, calendarEndDate} returns the whole range as "
+            "JSON in one response. Copy Logan."
+        ),
+        reference="aus_council_scrapers/scrapers/qld/logan.py",
+    ),
+    Platform(
+        name="Resolve (redsol/CivicClerk)",
+        signatures=(r"\.resolve\.red", r"api\.resolve\.red", r"X-RESOLVE-CLIENT"),
+        guidance=(
+            "Bare SPA shell; all data is JSON from api.resolve.red (header "
+            "X-RESOLVE-CLIENT: <tenant>). /public/Events lists meetings, "
+            "/public/Events/{id} carries document refs. Documents are signed "
+            "short-lived blob URLs — store portal permalinks. Copy Noosa."
+        ),
+        reference="aus_council_scrapers/scrapers/qld/noosa.py",
+    ),
+    Platform(
         name="Civica",
         signatures=(r"civicaepathway", r"civica\.com"),
         guidance="No base class yet — first council on this platform gets to write one.",
